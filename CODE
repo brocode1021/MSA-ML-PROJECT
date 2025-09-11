@@ -1,32 +1,50 @@
-import random
-def play_the_game():
-    computer_secret_number = random.randint(1, 100)
-    total_tries_allowed = 7
-    guesses_taken = 0
-    print("\n--- Welcome to the Number Guessing Game ---")
-    print(f"I've thought of a secret number between 1 and 100.")
-    print(f"You'll have {total_tries_allowed} chances to guess what it is.")
-    print("------------------------------------------------")
-    while guesses_taken < total_tries_allowed:
-        tries_left = total_tries_allowed - guesses_taken
-        print(f"You have {tries_left} tries left.")
-        try:
-            player_guess = int(input("What is your guess? "))
-        except ValueError:
-            print("That is'nt a number. Let's try that again.\n")
-            continue
-        guesses_taken += 1
-        if player_guess < computer_secret_number:
-            print("A little low,... Try thinking of a higher number.")
-        elif player_guess > computer_secret_number:
-            print("A bit high,.. Try a lower number.")
-        else:
-            print(f"\nThe secret number was indeed {computer_secret_number}")
-            print(f"And it  took you {guesses_taken} tries. ")
-            return
-        print("------------------------------------------------")
-    print(f"\nYou've run out of tries.")
-    print(f"The secret number was {computer_secret_number}.")
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+def run_iris_classifier():
+
+    print(" Welcome to the Iris Flower Classifier")
+    print("--------------------------------------------")
+    iris = load_iris()
+    X = iris.data
+    y = iris.target
+
+    print(" Data loaded successfully")
+    print(f"   - We have {X.shape[0]} samples and {X.shape[1]} features.")
+    print(f"   - The flower species are: {list(iris.target_names)}")
+    print("--------------------------------------------")
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    print("Data split into training and testing sets.")
+    print(f"   - Training samples: {len(X_train)}")
+    print(f"   - Testing samples: {len(X_test)}")
+    print("--------------------------------------------")
+
+    model = LogisticRegression(max_iter=200) # max_iter helps the model converge
+    print("Training the model...")
+    model.fit(X_train, y_train)
+    print(" Model training complete!")
+    print("--------------------------------------------")
+
+    print(" Evaluating the model's performance...")
+    predictions = model.predict(X_test)
+
+    accuracy = accuracy_score(y_test, predictions)
+
+    print(" Results are in! ")
+    print(f"   - The model's accuracy on the test data is: {accuracy * 100:.2f}%")
+
+    print("\nHere are a few predictions vs actual labels:")
+    for i in range(5):
+        actual_species = iris.target_names[y_test[i]]
+        predicted_species = iris.target_names[predictions[i]]
+        print(f"  - Sample {i+1}: Model predicted '{predicted_species}', Actual was '{actual_species}'")
+
+    print("\n--------------------------------------------")
+    print(" Task complete. The model is ready!")
+
 if __name__ == "__main__":
-    play_the_game()
-    print("\nThanks for playing!")
+    run_iris_classifier()
+
