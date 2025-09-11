@@ -1,23 +1,42 @@
-# MSA-ML-PROJECT
-This task is designed to test your ability to build a simple Machine Learning model. You can choose a Regression or Classification problem using standard beginner-friendly datasets. Your focus should be on understanding the ML pipeline: data → preprocessing → model → results.
-Number Guessing Game
-Hey... This is a fun little number guessing game I made with Python.
-The computer thinks of a secret number between 1 and 100, and you get 7 tries to guess what it is. It's simple, fun, and a new puzzle every time you play.
-How It Works
-When you start a game, the computer secretly picks a random number. It'll then ask for your guess and give you a helpful hint after each try, telling you if your guess was too high or too low.
-You keep guessing until you either get it right or you run out of your 7 tries. Simple as that!
-Oh, and if you accidentally type letters instead of a number, the game will just ask you to try again without breaking.
-Game Results
-When the game ends, you'll see one of two messages:
-If you win:
-The secret number was indeed 58
-And it took you 4 tries.
-If you run out of tries:
-You've run out of tries.
-The secret number was 72.
-How to Play
-Ready to give it a go? You don't need to install anything special, just have Python on your computer.
-Save the code in a file named game.py.
-Open your terminal (like Command Prompt or Terminal).
-Navigate to the folder where you saved the file.
-Run the command: python game.py
+Simple Iris Flower Classification Project
+A friendly and straightforward machine learning project for the Microsoft Club recruitment task. This project builds a model to classify species of Iris flowers based on their petal and sepal measurements.
+About This Task
+This project is designed to demonstrate a fundamental understanding of the machine learning pipeline, from loading data to evaluating a model. The goal is to keep it simple, clean, and easy to understand for anyone new to ML!
+Problem Statement
+The main goal is to build a model that can correctly predict the species of an Iris flower (setosa, versicolor, or virginica) given four of its physical measurements:
+Sepal Length
+Sepal Width
+Petal Length
+Petal Width
+This is a classic multi-class classification problem.
+The Dataset
+I chose the Iris dataset, which is one of the most famous datasets in the world of machine learning. It's perfect for beginners because:
+It's small and easy to load.
+It doesn't require complex cleaning or preprocessing.
+It's built right into the scikit-learn library!
+Workflow (The ML Pipeline)
+My approach follows the standard machine learning pipeline:
+Data Loading: The script begins by loading the Iris dataset directly from scikit-learn.
+Data Splitting: I split the dataset into two parts:
+An 80% training set to teach the model.
+A 20% testing set to evaluate how well the model performs on new, unseen data.
+Model Selection: I chose Logistic Regression as the model. It's a great baseline for classification tasks because it's efficient, effective, and easy to interpret.
+Training: The model learns patterns and relationships from the training data using the .fit() method.
+Evaluation: Finally, the trained model makes predictions on the test set. I calculated the accuracy to see what percentage of flowers it classified correctly.
+Results
+The model performs exceptionally well on this dataset!
+Accuracy on the test set: 100.00%
+This high accuracy is common for the Iris dataset with simple models, which confirms that our pipeline is working correctly. The script also prints a few examples of its predictions versus the actual labels.
+How to Run This Project
+You can get this running on your machine in just a few steps.
+Clone the Repository
+git clone [your-github-repository-url]
+cd [repository-folder]
+Install the Dependencies
+Make sure you have Python installed. Then, run this command in your terminal to install the necessary libraries.
+pip install -r requirements.txt
+Run the Script!
+Execute the Python script to see the magic happen.
+python model.py
+You'll see the output in your terminal, walking you through each step of the process and showing the final accuracy.
+Thanks for checking out my project! 
